@@ -21,19 +21,15 @@ public class ManualController : MonoBehaviour
 
     private void Update()
     {
+        // Read input values from the InputActions
         _forwardReverse = _inputActions.Driving.ForwardReverse.ReadValue<float>();
         _steer = _inputActions.Driving.Steer.ReadValue<float>();
         _brake = _inputActions.Driving.Brake.ReadValue<float>();
 
-        Debug.Log("Brake Value: " + _brake);
-
         _drive.Go(_forwardReverse, _steer, _brake);
     }
 
-    /*
-    * New Input System
-    */
-
+    //Enable/Disable New Input System
     private void OnEnable()
     {
         _inputActions = new InputActions();
