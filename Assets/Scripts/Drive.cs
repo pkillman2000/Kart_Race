@@ -3,20 +3,20 @@ using UnityEngine;
 public class Drive : MonoBehaviour
 {
     [SerializeField]
-    private WheelCollider[] _wheelCollider;
+    public WheelCollider[] _wheelCollider;
     [SerializeField]
     private GameObject[] _wheelMesh;
     [SerializeField]
-    private Rigidbody _rigidbody;
+    public Rigidbody _rigidbody;
 
     // Forward and Reverse
     [SerializeField]
     private float _torque = 200f;
     [SerializeField]
-    private bool[] _hasTorque;
+    public bool[] _hasTorque;
     [SerializeField]
     private float _maximumSpeed = 70f;
-    private float _currentSpeed;
+    public float _currentSpeed;
 
     // Steering
     [SerializeField]
@@ -52,12 +52,30 @@ public class Drive : MonoBehaviour
     [SerializeField]
     private int _numberOfGears = 5;
 
+    // Choose Controller
+    [SerializeField]
+    private bool _isManualControlled = false;
+    private ManualController _manualController;
+    private AIController _aiController;
+
     private void Start()
     {
         _skidSmoke = new ParticleSystem[_wheelCollider.Length];
         InstantiateSmokePrefabs();
 
-        _brakeLightMaterial.EnableKeyword("_EMISSION");
+        _manualController = GetComponent<ManualController>();
+        if(_manualController == null)
+        {
+            Debug.LogError("Manual Controller is Null!");
+        }
+
+        _aiController = GetComponent<AIController>();
+        if(_aiController == null)
+        {
+            Debug.LogError("AI Controller is Null!");
+        }
+
+        ActivateController();
     }
 
     private void Update()
@@ -123,7 +141,7 @@ public class Drive : MonoBehaviour
         }
     }
 
-    private void CheckForSkid()
+    public void CheckForSkid()
     {
         int numSkidding = 0;
 
@@ -134,7 +152,7 @@ public class Drive : MonoBehaviour
             // Check to see if wheel collider is touching the ground
             if (_wheelCollider[i].GetGroundHit(out wheelHit))
             {
-                // Check if the wheel is skidding based on the slip values
+                // Check if the wheel is skidding based on the slip values to play sound and emit smoke
                 if (Mathf.Abs(wheelHit.forwardSlip) > 0.4f || Mathf.Abs(wheelHit.sidewaysSlip) > 0.4f)
                 {
                     numSkidding++;
@@ -165,7 +183,7 @@ public class Drive : MonoBehaviour
         }
     }
 
-    private void CalculateEngineSound()
+    public void CalculateEngineSound()
     {
         _currentSpeed = _rigidbody.linearVelocity.magnitude;
         float range = _maximumSpeed / _numberOfGears;
@@ -189,6 +207,21 @@ public class Drive : MonoBehaviour
         else if(_currentSpeed < range * 5) // Fifth Gear
         {
             _engineSound.pitch = Mathf.Lerp(_lowPitch, _highPitch, (_currentSpeed - (range * 4)) / (range * 5));
+        }
+    }
+
+    private void ActivateController()
+    {
+        if (_isManualControlled)
+        {
+            _manualController.enabled = true;
+            _aiController.enabled = false;
+
+        }
+        else
+        {
+            _manualController.enabled = false;
+            _aiController.enabled = true;
         }
     }
 }

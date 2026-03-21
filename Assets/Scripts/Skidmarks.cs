@@ -9,11 +9,12 @@ public class Skidmarks : MonoBehaviour {
 	[SerializeField]
 	Material skidmarksMaterial; // Material for the skidmarks to use
 
-	// END INSPECTOR SETTINGS
+    // END INSPECTOR SETTINGS
+    // const int MAX_MARKS = 2048; // Max number of marks total for everyone together
 
-	const int MAX_MARKS = 2048; // Max number of marks total for everyone together
+    const int MAX_MARKS = 512; // Max number of marks total for everyone together
 	const float MARK_WIDTH = 0.35f; // Width of the skidmarks. Should match the width of the wheels
-	const float GROUND_OFFSET = 0.02f;  // Distance above surface in metres
+	const float GROUND_OFFSET = 0.05f;  // Distance above surface in metres
 	const float MIN_DISTANCE = 0.25f; // Distance between skid texture sections in metres. Bigger = better performance, less smooth
 	const float MIN_SQR_DISTANCE = MIN_DISTANCE * MIN_DISTANCE;
 
