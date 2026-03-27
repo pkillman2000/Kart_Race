@@ -1,26 +1,41 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Circuit : MonoBehaviour
 {
-    [SerializeField]
-    private bool _showPath = true;
+    /*
+     * Checkpoints are for respawning
+     * Waypoint are for the tracker to follow
+    */
+
     [SerializeField]
     public GameObject[] _waypoints;
+    [SerializeField]
+    public GameObject[] _checkpoints;
 
     private void Awake()
     {
 
         AddWaypointsToArray();
+        AddCheckpointsToArray();
     }
 
+    // Waypoints
     private void AddWaypointsToArray()
     {
+        int index = 0;
         List<GameObject> childrenList = new List<GameObject>();
 
         foreach (Transform child in transform)
         {
-            childrenList.Add(child.gameObject);
+            Waypoint waypoint = child.GetComponent<Waypoint>();
+            if (waypoint.isCheckpoint)
+            {
+                childrenList.Add(child.gameObject);
+                waypoint.waypointIndex = index;
+                index++;
+            }
         }
 
         _waypoints = childrenList.ToArray();
@@ -50,25 +65,44 @@ public class Circuit : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    // Checkpoints
+    private void AddCheckpointsToArray()
     {
-        if (_showPath)
+        List<GameObject> childrenList = new List<GameObject>();
+        int index = 0;
+        foreach (Transform child in transform)
         {
-            Vector3 currentWaypoint = new Vector3();
-            Vector3 nextWaypoint = new Vector3();
+            Waypoint waypoint = child.GetComponent<Waypoint>();
+            waypoint.checkpointIndex = index;
+            childrenList.Add(child.gameObject);
+            index++;
+        }
 
-            if (_waypoints == null || _waypoints.Length == 0)
-                return;
-            for (int i = 0; i < _waypoints.Length; i++)
-            {
-                currentWaypoint = _waypoints[i].transform.position;
-                nextWaypoint = _waypoints[(i + 1) % _waypoints.Length].transform.position;
-                Gizmos.color = Color.white;
-                //Gizmos.DrawSphere(currentWaypoint, 0.5f);
-                Gizmos.DrawLine(currentWaypoint, nextWaypoint);
-            }
+        _checkpoints = childrenList.ToArray();
+    }
 
-            Gizmos.DrawLine(nextWaypoint, _waypoints[0].transform.position);
+    public int GetPreviousCheckpointIndex(int currentCheckpointIndex)
+    {
+        if (currentCheckpointIndex > 0)
+        {
+            return currentCheckpointIndex - 1;
+        }
+        else
+        {
+            return _checkpoints.Length - 1;
         }
     }
+
+    public int GetNextCheckpointIndex(int currentCheckpointIndex)
+    {
+        if (currentCheckpointIndex < _checkpoints.Length - 1)
+        {
+            return currentCheckpointIndex + 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
 }

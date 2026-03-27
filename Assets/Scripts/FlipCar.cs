@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class FlipCar : MonoBehaviour
 {
-    Rigidbody _rigidbody;
-    float _lastTimeChecked;
+    private Rigidbody _rigidbody;
+    private float _lastTimeChecked;
+    [SerializeField]
+    private float _flipDuration = 3.0f;
 
     void Start()
     {
@@ -19,13 +21,13 @@ public class FlipCar : MonoBehaviour
     void Update()
     {
         // Check if car is flipped or has velocity
-        if(transform.up.y > 0.3f || _rigidbody.angularVelocity.magnitude > 1)
+        if(transform.up.y > 0.3f || _rigidbody.angularVelocity.magnitude > .1f)
         {
             _lastTimeChecked = Time.time;
         }
 
         // If the car has been flipped for more than 3 seconds, flip it back over
-        if (Time.time > _lastTimeChecked + 3)
+        if (Time.time > _lastTimeChecked + _flipDuration)
         {
             RightCar();
         }

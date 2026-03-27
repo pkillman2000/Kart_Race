@@ -116,7 +116,15 @@ public class Drive : MonoBehaviour
             }
 
             // Braking
-            brake = Mathf.Clamp(brake, 0f, 1f) * _maximumBrakeTorque;
+            if (_currentSpeed > .5) // Only allow braking if we are moving forward
+            {
+                brake = Mathf.Clamp(brake, 0f, 1f) * _maximumBrakeTorque;
+            }
+            else
+            {
+                brake = 0f;
+            }
+            
             if (_canBrake[i])
             {
                 _wheelCollider[i].brakeTorque = brake;
@@ -131,7 +139,7 @@ public class Drive : MonoBehaviour
             {
                 _brakeLightMaterial.DisableKeyword("_EMISSION");
             }
-
+            
             // Position and rotate wheel meshes to match the wheel collider
             Quaternion quat;
             Vector3 position;
@@ -158,7 +166,7 @@ public class Drive : MonoBehaviour
                     numSkidding++;
                     if (!_skidSound.isPlaying)
                     {
-                        _skidSound.Play();
+                        //_skidSound.Play();
                         _skidSmoke[i].transform.position = _wheelCollider[i].transform.position - _wheelCollider[i].transform.up * _wheelCollider[i].radius;
                         _skidSmoke[i].Emit(1);
                     }
