@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Circuit : MonoBehaviour
@@ -11,14 +10,14 @@ public class Circuit : MonoBehaviour
 
     [SerializeField]
     public GameObject[] _waypoints;
-    [SerializeField]
-    public GameObject[] _checkpoints;
+
+    public float _trackLength;
+    public int _numberOfLaps = 5;
 
     private void Awake()
     {
-
         AddWaypointsToArray();
-        AddCheckpointsToArray();
+        CalculateTrackLength();
     }
 
     // Waypoints
@@ -30,14 +29,10 @@ public class Circuit : MonoBehaviour
         foreach (Transform child in transform)
         {
             Waypoint waypoint = child.GetComponent<Waypoint>();
-            if (waypoint.isCheckpoint)
-            {
-                childrenList.Add(child.gameObject);
-                waypoint.waypointIndex = index;
-                index++;
-            }
+            childrenList.Add(child.gameObject);
+            waypoint.waypointIndex = index;
+            index++;
         }
-
         _waypoints = childrenList.ToArray();
     }
 
@@ -65,44 +60,18 @@ public class Circuit : MonoBehaviour
         }
     }
 
-    // Checkpoints
-    private void AddCheckpointsToArray()
+    private void CalculateTrackLength()
     {
-        List<GameObject> childrenList = new List<GameObject>();
-        int index = 0;
-        foreach (Transform child in transform)
+        float legDistance = 0f;
+        int nextWaypointIndex = 0;
+        for (int i = 0; i < _waypoints.Length; i++)
         {
-            Waypoint waypoint = child.GetComponent<Waypoint>();
-            waypoint.checkpointIndex = index;
-            childrenList.Add(child.gameObject);
-            index++;
-        }
-
-        _checkpoints = childrenList.ToArray();
-    }
-
-    public int GetPreviousCheckpointIndex(int currentCheckpointIndex)
-    {
-        if (currentCheckpointIndex > 0)
-        {
-            return currentCheckpointIndex - 1;
-        }
-        else
-        {
-            return _checkpoints.Length - 1;
+            nextWaypointIndex = GetNextWaypointIndex(i);
+            Vector3 currentWaypointPosition = _waypoints[i].transform.position;
+            Vector3 nextWaypointPosition = _waypoints[nextWaypointIndex].transform.position;
+            legDistance = Vector3.Distance(currentWaypointPosition, nextWaypointPosition);
+            _trackLength += legDistance;
+            _waypoints[nextWaypointIndex].GetComponent<Waypoint>()._cumulativeTrackDistance = _trackLength;
         }
     }
-
-    public int GetNextCheckpointIndex(int currentCheckpointIndex)
-    {
-        if (currentCheckpointIndex < _checkpoints.Length - 1)
-        {
-            return currentCheckpointIndex + 1;
-        }
-        else
-        {
-            return 0;
-        }
-    }
-
 }

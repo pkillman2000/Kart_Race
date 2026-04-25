@@ -335,7 +335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6489812626696671463}
   - component: {fileID: 3395963115580014798}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Gauge
   m_TagString: Untagged
   m_Icon: {fileID: 0}

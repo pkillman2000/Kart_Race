@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [System.Serializable]
@@ -31,6 +32,9 @@ public class CarController : MonoBehaviour
     [SerializeField]
     private GameObject _centerOfMass;
     public Rigidbody _rigidbody;
+    [SerializeField]
+    public string _carName;
+    public bool _hasUI = false;
 
     [Header("Vehicle Control Type")]
     [SerializeField]
@@ -54,7 +58,7 @@ public class CarController : MonoBehaviour
     [Header("Acceleration")]
     [SerializeField]
     private float _baseTorque = 300f;
-    [Tooltip("Settings for the gears. Can be customized for type of track, NPC or player")]
+    [Tooltip("Settings for the gears. Can be customized for type of track, NPC or target")]
     [SerializeField]
     private ManualTransmission[] _gears;
     public float _currentRigidbodySpeed;
@@ -107,6 +111,16 @@ public class CarController : MonoBehaviour
     private Light _leftHeadlight;
     [SerializeField]
     private bool _headlightsOn = false;
+    public int _numberOfLaps;
+    public int _currentLap = 0;
+    public float _currentLapPercentage = 0;
+    public float _racePercentage = 0;
+    public float _trackLength = 0;
+    public float _lapDistance = 0;
+    public float _currentRaceDistance = 0;
+    public bool _raceFinished = false;
+    [SerializeField]
+    private GameObject _cameraContainer;
 
     void Start()
     {
@@ -139,12 +153,6 @@ public class CarController : MonoBehaviour
                 break;
         }
 
-        _uiManager = FindFirstObjectByType<UIManager>();
-        if (_uiManager == null)
-        {
-            Debug.LogError("UI Manager is Null!");
-        }
-
         _rigidbody.centerOfMass = _centerOfMass.transform.localPosition;
 
         _playerController = GetComponent<PlayerController>();
@@ -160,7 +168,7 @@ public class CarController : MonoBehaviour
         }
         _skidSmoke = new ParticleSystem[_wheelColliders.Length];
 
-        // Make care player or NPC controlled
+        // Make care target or NPC controlled
         if (_isNPCControlled)
         {
             _playerController.enabled = false;
@@ -173,19 +181,48 @@ public class CarController : MonoBehaviour
             _npcController.enabled = false;
         }
 
+        _trackLength = FindFirstObjectByType<Circuit>()._trackLength;
+        _numberOfLaps = FindFirstObjectByType<Circuit>()._numberOfLaps;
+
         Headlights(_headlightsOn);
 
         InstantiateSmokePrefabs();
+
+        _uiManager = FindFirstObjectByType<UIManager>();
+        if (_uiManager == null)
+        {
+            Debug.LogError("UI Manager is Null!");
+        }
+
+
+        if (_hasUI)
+        {
+            _cameraContainer.SetActive(true);
+        }
+        else
+        {
+            _cameraContainer.SetActive(false);
+        }
     }
 
 
     void FixedUpdate()
     {
         _currentRigidbodySpeed = _rigidbody.linearVelocity.magnitude;
-        GroundWheels(_wheelColliders[0], _wheelColliders[1]); // Front wheels
-        GroundWheels(_wheelColliders[2], _wheelColliders[3]); // Rear wheels
-        CheckForSkid();
-        RightCar();
+
+        if (_raceFinished)
+        {
+            ApplyInputs(-0.5f, 0, _maximumBrakeTorque * 5f);
+            BrakeLights(1);
+        }
+        else
+        {
+            GroundWheels(_wheelColliders[0], _wheelColliders[1]); // Front wheels
+            GroundWheels(_wheelColliders[2], _wheelColliders[3]); // Rear wheels
+            CheckForSkid();
+            RightCar();
+        }
+
         CalculateEngineSound();
         UpdateSpeed();
     }
@@ -238,7 +275,8 @@ public class CarController : MonoBehaviour
                         torque = 0f;
                     }
 
-                    _uiManager.SetCurrentGearName("R");
+                    if (_hasUI)
+                        _uiManager.SetCurrentGearName("R");
                     brakeTorque = 0;
                     BrakeLights(0);
                     ReverseLights();
@@ -248,50 +286,58 @@ public class CarController : MonoBehaviour
             {
                 _timeBeforeReverse = Time.time;
                 brakeTorque = _maximumBrakeTorque * braking;
-                _uiManager.SetCurrentGearName(_gears[_currentGear]._gearName);
+                if (_hasUI)
+                    _uiManager.SetCurrentGearName(_gears[_currentGear]._gearName);
                 BrakeLights(braking);
             }
 
             // Calculate Steering
             steering = Mathf.Clamp(steering, -1f, 1f) * _maximumSteerAngle;
 
-            // Apply Acceleration, Braking, and Steering to wheels
-            for (int i = 0; i < _wheelColliders.Length; i++)
+            ApplyInputs(steering, torque, brakeTorque);
+        }
+    }
+
+    private void ApplyInputs(float steering, float torque, float brakeTorque)
+    {
+
+
+        // Apply Acceleration, Braking, and Steering to wheels
+        for (int i = 0; i < _wheelColliders.Length; i++)
+        {
+            if (_currentRigidbodySpeed < _gears[_currentGear]._topSpeed) // If below top speedMPH, apply torque
             {
-                if (_currentRigidbodySpeed < _gears[_currentGear]._topSpeed) // If below top speedMPH, apply torque
+                if (_hasTorque[i]) // Acclerate
                 {
-                    if (_hasTorque[i]) // Acclerate
-                    {
-                        _wheelColliders[i].motorTorque = torque;
-                    }
-                    else
-                    {
-                        _wheelColliders[i].motorTorque = 0f;
-                    }
-                }
-                else // If above top speedMPH, don't apply torque
-                {
-                    _wheelColliders[i].motorTorque = 0f;
-                }
-
-                _wheelColliders[i].brakeTorque = brakeTorque; // Brake
-
-                if (_canSteer[i]) // Steer
-                {
-                    _wheelColliders[i].steerAngle = steering;
+                    _wheelColliders[i].motorTorque = torque;
                 }
                 else
                 {
-                    _wheelColliders[i].steerAngle = 0f;
+                    _wheelColliders[i].motorTorque = 0f;
                 }
-
-                // Update wheel mesh position and rotation to match collider
-                Vector3 position;
-                Quaternion rotation;
-                _wheelColliders[i].GetWorldPose(out position, out rotation);
-                _wheelMeshes[i].transform.position = position;
-                _wheelMeshes[i].transform.rotation = rotation;
             }
+            else // If above top speedMPH, don't apply torque
+            {
+                _wheelColliders[i].motorTorque = 0f;
+            }
+
+            _wheelColliders[i].brakeTorque = brakeTorque; // Brake
+
+            if (_canSteer[i]) // Steer
+            {
+                _wheelColliders[i].steerAngle = steering;
+            }
+            else
+            {
+                _wheelColliders[i].steerAngle = 0f;
+            }
+
+            // Update wheel mesh position and rotation to match collider
+            Vector3 position;
+            Quaternion rotation;
+            _wheelColliders[i].GetWorldPose(out position, out rotation);
+            _wheelMeshes[i].transform.position = position;
+            _wheelMeshes[i].transform.rotation = rotation;
         }
     }
 
@@ -302,7 +348,8 @@ public class CarController : MonoBehaviour
             if (averageWheelSpeed < _gears[i]._shiftUpSpeed && averageWheelSpeed >= _gears[i]._shiftDownSpeed)
             {
                 _currentGear = i;
-                _uiManager.SetCurrentGearName(_gears[i]._gearName);
+                if (_hasUI)
+                    _uiManager.SetCurrentGearName(_gears[i]._gearName);
 
                 break;
             }
@@ -319,7 +366,8 @@ public class CarController : MonoBehaviour
                 _currentGear++;
             }
         }
-        _uiManager.SetCurrentGearName(_gears[_currentGear]._gearName);
+        if (_hasUI)
+            _uiManager.SetCurrentGearName(_gears[_currentGear]._gearName);
     }
 
     public void ShiftGearDown()
@@ -332,7 +380,8 @@ public class CarController : MonoBehaviour
                 _currentGear--;
             }
         }
-        _uiManager.SetCurrentGearName(_gears[_currentGear]._gearName);
+        if (_hasUI)
+            _uiManager.SetCurrentGearName(_gears[_currentGear]._gearName);
     }
 
     private void BrakeLights(float braking)
@@ -367,8 +416,8 @@ public class CarController : MonoBehaviour
     {
         _engineSound.pitch = Mathf.Lerp(_lowPitch, _highPitch, _currentRigidbodySpeed / _gears[_currentGear]._topSpeed);
         float speedPercent = Mathf.Lerp(0, 1, _currentRigidbodySpeed / _gears[_currentGear]._topSpeed);
-        //_engineSound.pitch = speedPercent;
-        _uiManager.SetTachometer(speedPercent);
+        if (_hasUI)
+            _uiManager.SetTachometer(speedPercent);
     }
 
     // Helps keep the car stable when going around corners
@@ -490,6 +539,44 @@ public class CarController : MonoBehaviour
     {
         float speedNeedle = _currentRigidbodySpeed / _gears[_gears.Length - 1]._topSpeed; // Get speed as a value between 0 and 1 for the speedometer needle
         float speedMPH = _currentRigidbodySpeed * 2.237f; // Convert from m/s to mph
-        _uiManager.SetSpeed(speedNeedle, Mathf.RoundToInt(speedMPH).ToString());
+        if (_hasUI)
+            _uiManager.SetSpeed(speedNeedle, Mathf.RoundToInt(speedMPH).ToString());
+    }
+
+    public void UpdateLapProgress(float distance)
+    {
+        if (_currentLap > 0)
+        {
+            _lapDistance = distance;
+            _currentRaceDistance = distance + ((_currentLap - 1) * _trackLength);
+
+            _currentLapPercentage = _lapDistance / _trackLength * 100f;
+            _racePercentage = _currentRaceDistance / (_trackLength * _numberOfLaps) * 100f;
+            if (_hasUI)
+            {
+                if (_raceFinished)
+                {
+                    _uiManager.SetRaceProgress(_numberOfLaps, _numberOfLaps, 0);
+                }
+                else
+                {
+                    _uiManager.SetRaceProgress(_currentLap, _numberOfLaps, _currentLapPercentage);
+                }
+            }
+        }
+    }
+
+    public void UpdateRaceProgress()
+    {
+        _currentLap++;
+        if (_currentLap > _numberOfLaps)
+        {
+            _raceFinished = true;
+        }
+    }
+
+    IEnumerator MoveCarToPodium()
+    {
+        yield return new WaitForSeconds(2.0f);
     }
 }

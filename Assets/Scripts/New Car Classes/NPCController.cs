@@ -24,16 +24,6 @@ public class NPCController : MonoBehaviour
     private float _lookAheadDistance = 5f;
     private GameObject _currentWaypoint;
 
-    [Header("Avoidance")]
-    [SerializeField]
-    public float _avoidPath = 0f;
-    [SerializeField]
-    public float _avoidTime = 0f;
-    [SerializeField]
-    public float _wanderDistance = 4f; // Avoiding distance
-    [SerializeField]
-    public float _avoidLength = 1f; // How long car is in avoid mode in seconds
-
     [Header("Unstick")]
     private Rigidbody _rigidbody;
     private float _lastTimeUnstickChecked;
@@ -42,6 +32,12 @@ public class NPCController : MonoBehaviour
 
     void Start()
     {
+        _circuit = FindFirstObjectByType<Circuit>();
+        if (_circuit == null)
+        {
+            Debug.LogError("Circuit is Null!");
+        }
+
         _carController = GetComponent<CarController>();
         if (_carController == null)
         {
@@ -58,52 +54,58 @@ public class NPCController : MonoBehaviour
 
     void Update()
     {
-        Vector3 localTarget;
-        float targetAngle;
-
-        // Steering:
-
-        // Avoidance - Based on AvoidDetector class
-        if (Time.time < _carController._rigidbody.GetComponent<AvoidDetector>()._avoidTime)
+        if (!_carController._raceFinished)
         {
-            // Aim right of tracker to avoid car
-            localTarget = _tracker.transform.right * _carController._rigidbody.GetComponent<AvoidDetector>()._avoidPath;
-        }
-        else // Not avoiding
-        {
-            // Put target and car on same plane
+
+            Vector3 localTarget;
+            float targetAngle;
+            // Steering:
+
+            /*
+            // Avoidance - Based on AvoidDetector class
+            if (Time.time < _carController._rigidbody.GetComponent<AvoidDetector>()._avoidTime)
+            {
+                // Aim right of tracker to avoid car
+                localTarget = _tracker.transform.right * _carController._rigidbody.GetComponent<AvoidDetector>()._avoidPath;
+            }
+            else // Not avoiding
+            {
+                // Put target and car on same plane
+                localTarget = _carController._rigidbody.gameObject.transform.InverseTransformPoint(_tracker.transform.position);
+            }
+            */
+
             localTarget = _carController._rigidbody.gameObject.transform.InverseTransformPoint(_tracker.transform.position);
-        }
-
-        //localTarget = _carController._rigidbody.gameObject.transform.InverseTransformPoint(_tracker.transform.position);
-        targetAngle = Mathf.Atan2(localTarget.x, localTarget.z) * Mathf.Rad2Deg;
-
-        // If car is in reverse, invert the target angle
-        float steer = Mathf.Clamp(targetAngle * _steerSensitivity, -1f, 1f) * Mathf.Sign(_carController._currentRigidbodySpeed);
+            targetAngle = Mathf.Atan2(localTarget.x, localTarget.z) * Mathf.Rad2Deg;
 
 
-        ProgressTracker(); // Move the tracker along the waypoints, and look at the next waypoint
+            // If car is in reverse, invert the target angle
+            float steer = Mathf.Clamp(targetAngle * _steerSensitivity, -1f, 1f) * Mathf.Sign(_carController._currentRigidbodySpeed);
 
-        if (RaceMonitor.racing == true)
-        {
-            // Check if car has velocity
-            if (_carController._currentRigidbodySpeed > 1f)
+
+            ProgressTracker(); // Move the tracker along the waypoints, and look at the next waypoint
+
+            if (RaceMonitor.racing == true)
+            {
+                // Check if car has velocity
+                if (_carController._currentRigidbodySpeed > 1f)
+                {
+                    _lastTimeUnstickChecked = Time.time;
+                }
+
+                // Check if the car has been flipped or stuck for more than _stickDuration seconds
+                if (Time.time > (_lastTimeUnstickChecked + _stickDuration))
+                {
+                    Unstick();
+                }
+            }
+            else
             {
                 _lastTimeUnstickChecked = Time.time;
             }
 
-            // Check if the car has been flipped or stuck for more than _stickDuration seconds
-            if (Time.time > (_lastTimeUnstickChecked + _stickDuration))
-            {
-                Unstick();
-            }
+            _carController.SetDriverInput(_acceleration, _braking, steer);
         }
-        else
-        {
-            _lastTimeUnstickChecked = Time.time;
-        }
-
-        _carController.SetDriverInput(_acceleration, _braking, steer);
     }
 
     // Move the tracker along the waypoints, and look at the next waypoint

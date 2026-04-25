@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 42510591372494728}
   - component: {fileID: 5904250313144958277}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: biker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1860247470832068076}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: H.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 7407671270945163030}
   - component: {fileID: 2545811425384949031}
   - component: {fileID: 5178122496762243107}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Left-Front Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1955720880255426483}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: biker_Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,8 +287,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 961314343878634942}
-  m_Layer: 0
-  m_Name: Cameras
+  m_Layer: 7
+  m_Name: Camera Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -324,8 +324,7 @@ GameObject:
   - component: {fileID: 3536134097030129360}
   - component: {fileID: 3368178890176323858}
   - component: {fileID: 6314331595132746019}
-  - component: {fileID: 6228069508072080022}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Right Brake Light Outer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,29 +404,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6228069508072080022
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 846635516549105098}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &886711997444725662
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,7 +413,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1672767880705543239}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: foot.L.001_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -468,7 +444,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3918732306630201265}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: foot.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,7 +476,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6194699415054429830}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: General
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -538,8 +514,7 @@ GameObject:
   - component: {fileID: 8122913680600063687}
   - component: {fileID: 1364505180624474767}
   - component: {fileID: 6504097884632345337}
-  - component: {fileID: 3670544835585671407}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Brake Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -618,29 +593,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &3670544835585671407
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1653868480444185538}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &1904990084026749203
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,7 +604,7 @@ GameObject:
   - component: {fileID: 4698017719332562769}
   - component: {fileID: 1790020741962936993}
   - component: {fileID: 6169896098428214850}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Left-Rear Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -740,7 +692,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4211521394920326288}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: hand_2.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -772,7 +724,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 401580553931140292}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fingers.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -807,7 +759,7 @@ GameObject:
   - component: {fileID: 4192878154822164002}
   - component: {fileID: 6909469869460437202}
   - component: {fileID: 4124570942820559072}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Right Headlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -896,7 +848,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 929794856715834559}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Headlights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -929,7 +881,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 156898571678871440}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: IK.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -961,7 +913,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6209143137595390067}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: IK.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -992,7 +944,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3086069407448418135}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1026,7 +978,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5909813385127864247}
   - component: {fileID: 8905339883047297770}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Right-Front Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1097,7 +1049,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1591343609015293646}
   - component: {fileID: 6781342776947075658}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Left-Front Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1168,7 +1120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5872399122335041212}
   - component: {fileID: 3973949119665865119}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Right-Rear Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1238,7 +1190,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2303821728330034680}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: hand.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1270,7 +1222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6560451102077718535}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: shin.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1302,7 +1254,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3791335268873528502}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: leg.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1337,7 +1289,7 @@ GameObject:
   - component: {fileID: 3774128618273977875}
   - component: {fileID: 454696761646488947}
   - component: {fileID: 1805234244852886631}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: External Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1455,7 +1407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7234897515513010111}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: shin.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1488,7 +1440,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6648538170233195005}
   - component: {fileID: 2640968955009551404}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1503,13 +1455,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3197557234618863275}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7372774, y: 0, z: 0, w: 0.67559016}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.73058957, y: -0.19328992, z: 0.23035395, w: 0.61303747}
+  m_LocalPosition: {x: -0.0000020696066, y: -0.000046566125, z: -0.000031647724}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4192878154822164002}
-  m_LocalEulerAnglesHint: {x: 95, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 100, y: -35, z: 0}
 --- !u!108 &2640968955009551404
 Light:
   m_ObjectHideFlags: 0
@@ -1517,17 +1469,17 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3197557234618863275}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 0.904436, g: 0.9009434, b: 1, a: 1}
-  m_Intensity: 25
-  m_Range: 100
-  m_SpotAngle: 18
+  m_Intensity: 5
+  m_Range: 25
+  m_SpotAngle: 25
   m_InnerSpotAngle: 1
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
-    m_Type: 1
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -1558,7 +1510,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 215
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -1584,7 +1536,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4453784294012747291}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fingers_B.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1616,7 +1568,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 300547874573093678}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: B_bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1648,7 +1600,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8999852110725901901}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fingers_B.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1679,7 +1631,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3521615526192448119}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ring_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1710,7 +1662,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 986651604244156990}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: foot.R.001_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1741,7 +1693,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2505553329995242212}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fingers_B.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1776,7 +1728,7 @@ GameObject:
   - component: {fileID: 552680810039025219}
   - component: {fileID: 2452691779867259910}
   - component: {fileID: 1283526678797843401}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1792,7 +1744,7 @@ Transform:
   m_GameObject: {fileID: 4247224671715901285}
   serializedVersion: 2
   m_LocalRotation: {x: 0.50000006, y: 0.5, z: 0.5, w: 0.50000006}
-  m_LocalPosition: {x: -0.082081795, y: -0.0016775794, z: 0.016296536}
+  m_LocalPosition: {x: 0.09202746, y: 0.039662473, z: 0.016296519}
   m_LocalScale: {x: 0.011982742, y: 0.011982742, z: 0.011982742}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1837,7 +1789,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 247
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1898,7 +1850,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2296728688456658850}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: IK.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1931,7 +1883,7 @@ GameObject:
   - component: {fileID: 7016594685561146824}
   - component: {fileID: 8738270143409204904}
   - component: {fileID: 8615951520459782965}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Right-Rear Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2019,7 +1971,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4097971465558987002}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2051,7 +2003,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7876937541474631686}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fingers_2.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2083,7 +2035,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1337101509945806973}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2116,7 +2068,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8411321150138210036}
   - component: {fileID: 7661495322095987156}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Left-Rear Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2186,7 +2138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5690907759588033298}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Right-Front Mesh Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2218,7 +2170,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5715572003605665055}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Driver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2251,7 +2203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8638040349054504911}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ik.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2283,7 +2235,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6362468305993625623}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mouth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2317,7 +2269,7 @@ GameObject:
   - component: {fileID: 4917879564687163438}
   - component: {fileID: 4423137150245024599}
   - component: {fileID: 1422578416023565409}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Right-Front Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2405,7 +2357,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8204349267789066310}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: leg.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2437,7 +2389,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2547777282984781604}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: foot.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2469,7 +2421,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2420535242786232123}
   - component: {fileID: 6763392939829152209}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cockpit Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2530,7 +2482,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 247
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2551,7 +2503,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2692677960547568942}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Right-Rear Mesh Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2585,8 +2537,7 @@ GameObject:
   - component: {fileID: 132878654423079737}
   - component: {fileID: 5168875077805646829}
   - component: {fileID: 1568297722880139434}
-  - component: {fileID: 6462842416869115647}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Brake Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2665,29 +2616,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6462842416869115647
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5924167429562686087}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &5986549611660057878
 GameObject:
   m_ObjectHideFlags: 0
@@ -2697,7 +2625,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9085850007691613125}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: foot.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2730,7 +2658,7 @@ GameObject:
   - component: {fileID: 5480298110716806937}
   - component: {fileID: 7734907214018702355}
   - component: {fileID: 2120835762813651352}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Left Headlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2819,7 +2747,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2433949012637986140}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mouth_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2852,7 +2780,7 @@ GameObject:
   - component: {fileID: 6812352781369964827}
   - component: {fileID: 5021944476637528064}
   - component: {fileID: 8000476452992922024}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Center of Mass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2940,7 +2868,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8293497564116607963}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: foot.R.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2972,7 +2900,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 828409858821309852}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tire Mesh Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2988,7 +2916,7 @@ Transform:
   m_GameObject: {fileID: 6369901922072023370}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalPosition: {x: 377.03, y: 0.6, z: 1.6199999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3007,7 +2935,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8145012677202669520}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: foot.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3044,10 +2972,10 @@ GameObject:
   - component: {fileID: 1796435888663867484}
   - component: {fileID: 4904543567227045076}
   - component: {fileID: 8952777689044281428}
-  - component: {fileID: 1392186023515629333}
-  m_Layer: 0
+  - component: {fileID: 6031079538495465482}
+  m_Layer: 7
   m_Name: Car Body Parent
-  m_TagString: Car
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3061,7 +2989,7 @@ Transform:
   m_GameObject: {fileID: 6508646732969677596}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalPosition: {x: 377.03, y: 0.6, z: 1.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3119,10 +3047,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.75
-  m_Height: 3.7721858
+  m_Radius: 1.1648154
+  m_Height: 4.235236
   m_Direction: 2
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: -0.028940678, y: 0.84, z: -0.038587093}
 --- !u!82 &1796435888663867484
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3329,7 +3257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490b5516f06580349aa66ae47e5e0005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReadWaypointInformation
---- !u!114 &1392186023515629333
+--- !u!114 &6031079538495465482
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3338,13 +3266,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6508646732969677596}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f575e2435b874e44fa6b88c730e8227b, type: 3}
+  m_Script: {fileID: 11500000, guid: 5183ce54731721243ae6f59cdfc9b18a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AvoidDetector
-  _avoidPath: 0
-  _avoidTime: 0
-  _wanderDistance: 4
-  _avoidLength: 1
+  m_EditorClassIdentifier: Assembly-CSharp::CarCollisionNudge
+  nudgeForce: 10000
+  minVelocityForNudge: 0.1
+  _collisionVFXPrefab: {fileID: 2967929494340091623, guid: f42dd57db29525a488a614ed5d870f8c, type: 3}
 --- !u!1 &6602281866924657442
 GameObject:
   m_ObjectHideFlags: 0
@@ -3354,7 +3281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5334276984864720876}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Brake Lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3387,7 +3314,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 340137283098875398}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: H.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3419,7 +3346,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5024179453972635711}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: foot.L.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3451,7 +3378,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7257298874892432981}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: IK.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3483,7 +3410,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2731017661586006206}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: hand_2.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3519,9 +3446,9 @@ GameObject:
   - component: {fileID: 4116881763432530474}
   - component: {fileID: 8814665159625215913}
   - component: {fileID: 2063704204517523174}
-  m_Layer: 0
-  m_Name: Car Parent Refactored
-  m_TagString: Car
+  m_Layer: 7
+  m_Name: Jeep
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3541,6 +3468,7 @@ Transform:
   m_Children:
   - {fileID: 2669267213437204010}
   - {fileID: 828409858821309852}
+  - {fileID: 8569718318791455806}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4822624209976227375
@@ -3568,11 +3496,13 @@ MonoBehaviour:
   _antiRoll: 5000
   _centerOfMass: {fileID: 6241487149910968189}
   _rigidbody: {fileID: 2579277780639169263}
+  _carName: Paul
+  _hasUI: 1
   _isNPCControlled: 1
   _automaticTransmission: 1
   _driveWheels: 2
   _flipDuration: 3
-  _baseTorque: 325
+  _baseTorque: 350
   _gears:
   - _gearName: 1
     _torqueMultiplier: 3
@@ -3607,7 +3537,7 @@ MonoBehaviour:
   _currentRigidbodySpeed: 0
   _topReverseSpeed: 5
   _maximumSteerAngle: 30
-  _maximumBrakeTorque: 5000
+  _maximumBrakeTorque: 7000
   _rightBrakeLightRenderer: {fileID: 6504097884632345337}
   _leftBrakeLightRenderer: {fileID: 1568297722880139434}
   _brakeLightLitMaterial: {fileID: 2100000, guid: 373cf536042b8154291a7af1ce821618, type: 2}
@@ -3622,6 +3552,15 @@ MonoBehaviour:
   _rightHeadlight: {fileID: 2640968955009551404}
   _leftHeadlight: {fileID: 4295042588586419351}
   _headlightsOn: 0
+  _numberOfLaps: 0
+  _currentLap: 0
+  _currentLapPercentage: 0
+  _racePercentage: 0
+  _trackLength: 0
+  _lapDistance: 0
+  _currentRaceDistance: 0
+  _raceFinished: 0
+  _cameraContainer: {fileID: 844472796990760922}
 --- !u!114 &4116881763432530474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3649,10 +3588,6 @@ MonoBehaviour:
   _circuit: {fileID: 0}
   _steerSensitivity: 0.01
   _lookAheadDistance: 5
-  _avoidPath: 0
-  _avoidTime: 0
-  _wanderDistance: 4
-  _avoidLength: 1
   _stickDuration: 3
 --- !u!114 &2063704204517523174
 MonoBehaviour:
@@ -3679,7 +3614,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5281667403787339385}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bone.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3713,7 +3648,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5785542511912878994}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tire Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3748,7 +3683,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1579376202675829224}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ik.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3780,7 +3715,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4433523883701929730}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fingers_2.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3813,8 +3748,7 @@ GameObject:
   - component: {fileID: 407543523704780559}
   - component: {fileID: 7303476683587812687}
   - component: {fileID: 2058507533895549536}
-  - component: {fileID: 2982139905955382039}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Left Brake Light Outer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3894,29 +3828,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2982139905955382039
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7074858054995339764}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &7618157588614482086
 GameObject:
   m_ObjectHideFlags: 0
@@ -3927,7 +3838,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4076069853667867244}
   - component: {fileID: 4295042588586419351}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spot Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3942,13 +3853,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7618157588614482086}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7372774, y: -0, z: -0, w: 0.67559016}
+  m_LocalRotation: {x: 0.73058957, y: 0.19328992, z: -0.23035395, w: 0.61303747}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5480298110716806937}
-  m_LocalEulerAnglesHint: {x: 95, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 100, y: 35, z: 0}
 --- !u!108 &4295042588586419351
 Light:
   m_ObjectHideFlags: 0
@@ -3956,17 +3867,17 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7618157588614482086}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 0.904436, g: 0.9009434, b: 1, a: 1}
-  m_Intensity: 25
-  m_Range: 100
-  m_SpotAngle: 18
+  m_Intensity: 5
+  m_Range: 25
+  m_SpotAngle: 25
   m_InnerSpotAngle: 1
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
-    m_Type: 1
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -3997,7 +3908,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 215
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -4023,7 +3934,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6285191874400962044}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fingers.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4057,7 +3968,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8073615546008197377}
   - component: {fileID: 9131894342301546937}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bumper Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4118,7 +4029,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 247
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -4139,7 +4050,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2822365979465969055}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Left-Front Mesh Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4171,7 +4082,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7903492593040915519}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: hand.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4203,7 +4114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7149317501282772792}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fingers_B.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4234,7 +4145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1492877545376231879}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Left-Rear Mesh Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4266,7 +4177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1438787810023978069}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fingers_2.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4300,7 +4211,7 @@ GameObject:
   - component: {fileID: 1826239671327577727}
   - component: {fileID: 6493663824729990281}
   - component: {fileID: 2453919557833437126}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4389,7 +4300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7411684670659163101}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fingers_2.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4420,7 +4331,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5667321305776641245}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4445,3 +4356,101 @@ Transform:
   - {fileID: 3086069407448418135}
   m_Father: {fileID: 4097971465558987002}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &683835694795230420
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6832522234140881233}
+    m_Modifications:
+    - target: {fileID: 1012753672964384971, guid: 68a525b7dd3dee8418e488ce8647ef40, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2669267213437204010}
+    - target: {fileID: 1012753672964384971, guid: 68a525b7dd3dee8418e488ce8647ef40, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 2669267213437204010}
+    - target: {fileID: 5947919515079821752, guid: 68a525b7dd3dee8418e488ce8647ef40, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5947919515079821752, guid: 68a525b7dd3dee8418e488ce8647ef40, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5947919515079821752, guid: 68a525b7dd3dee8418e488ce8647ef40, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5947919515079821752, guid: 68a525b7dd3dee8418e488ce8647ef40, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5947919515079821752, guid: 68a525b7dd3dee8418e488ce8647ef40, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5947919515079821752, guid: 68a525b7dd3dee8418e488ce8647ef40, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5947919515079821752, guid: 68a525b7dd3dee8418e488ce8647ef40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077370487922994132, guid: 68a525b7dd3dee8418e488ce8647ef40, type: 3}
+      propertyPath: m_Name
+      value: Mini-Map Icon
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192050905736313066, guid: 68a525b7dd3dee8418e488ce8647ef40, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 377.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192050905736313066, guid: 68a525b7dd3dee8418e488ce8647ef40, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192050905736313066, guid: 68a525b7dd3dee8418e488ce8647ef40, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.6199999
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192050905736313066, guid: 68a525b7dd3dee8418e488ce8647ef40, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192050905736313066, guid: 68a525b7dd3dee8418e488ce8647ef40, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192050905736313066, guid: 68a525b7dd3dee8418e488ce8647ef40, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192050905736313066, guid: 68a525b7dd3dee8418e488ce8647ef40, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192050905736313066, guid: 68a525b7dd3dee8418e488ce8647ef40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192050905736313066, guid: 68a525b7dd3dee8418e488ce8647ef40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192050905736313066, guid: 68a525b7dd3dee8418e488ce8647ef40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 68a525b7dd3dee8418e488ce8647ef40, type: 3}
+--- !u!4 &8569718318791455806 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9192050905736313066, guid: 68a525b7dd3dee8418e488ce8647ef40, type: 3}
+  m_PrefabInstance: {fileID: 683835694795230420}
+  m_PrefabAsset: {fileID: 0}

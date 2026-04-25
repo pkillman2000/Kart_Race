@@ -10,14 +10,14 @@ public class AvoidDetector : MonoBehaviour
     public float _avoidPath = 0f;
     public float _avoidTime = 0f;
     [SerializeField]
-    public float _wanderDistance = 4f; // Avoiding distance
+    public float _wanderDistance = 0.5f; // Avoiding distance
     [SerializeField]
     public float _avoidLength = 1f; // How long car is in avoid mode in seconds
 
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Car")
+        if (collision.gameObject.tag == "Vehicle")
         {
             Rigidbody otherCar = collision.gameObject.GetComponent<Rigidbody>();
             _avoidTime = Time.time + _avoidLength;
