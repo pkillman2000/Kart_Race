@@ -18,11 +18,7 @@ public class NPCController : MonoBehaviour
     private float _steerSensitivity = 0.01f;
     private float _braking = 0f;
     private float _acceleration = 1f;
-    private GameObject _tracker;
-    private int _currentTrackerWaypointIndex = 0;
-    [SerializeField]
-    private float _lookAheadDistance = 5f;
-    private GameObject _currentWaypoint;
+    private ProgressTracker _progressTracker;
 
     [Header("Unstick")]
     private Rigidbody _rigidbody;
@@ -44,10 +40,11 @@ public class NPCController : MonoBehaviour
             Debug.LogError("CarController is Null!");
         }
 
-        // Create and position the tracker object
-        _tracker = new GameObject("Tracker");
-        _tracker.transform.position = _carController._rigidbody.gameObject.transform.position;
-        _tracker.transform.rotation = _carController._rigidbody.gameObject.transform.rotation;
+        _progressTracker = GetComponent<ProgressTracker>();
+        if (_progressTracker == null)
+        {
+            Debug.LogError("ProgressTracker is Null!");
+        }
 
         _rigidbody = _carController._rigidbody;
     }
@@ -56,34 +53,16 @@ public class NPCController : MonoBehaviour
     {
         if (!_carController._raceFinished)
         {
-
             Vector3 localTarget;
             float targetAngle;
             // Steering:
 
-            /*
-            // Avoidance - Based on AvoidDetector class
-            if (Time.time < _carController._rigidbody.GetComponent<AvoidDetector>()._avoidTime)
-            {
-                // Aim right of tracker to avoid car
-                localTarget = _tracker.transform.right * _carController._rigidbody.GetComponent<AvoidDetector>()._avoidPath;
-            }
-            else // Not avoiding
-            {
-                // Put target and car on same plane
-                localTarget = _carController._rigidbody.gameObject.transform.InverseTransformPoint(_tracker.transform.position);
-            }
-            */
-
-            localTarget = _carController._rigidbody.gameObject.transform.InverseTransformPoint(_tracker.transform.position);
+            localTarget = _carController._rigidbody.gameObject.transform.InverseTransformPoint(_progressTracker.GetTrackerPosition().transform.position);
             targetAngle = Mathf.Atan2(localTarget.x, localTarget.z) * Mathf.Rad2Deg;
 
 
             // If car is in reverse, invert the target angle
             float steer = Mathf.Clamp(targetAngle * _steerSensitivity, -1f, 1f) * Mathf.Sign(_carController._currentRigidbodySpeed);
-
-
-            ProgressTracker(); // Move the tracker along the waypoints, and look at the next waypoint
 
             if (RaceMonitor.racing == true)
             {
@@ -108,26 +87,6 @@ public class NPCController : MonoBehaviour
         }
     }
 
-    // Move the tracker along the waypoints, and look at the next waypoint
-    private void ProgressTracker()
-    {
-        if (Vector3.Distance(_carController._rigidbody.gameObject.transform.position, _tracker.transform.position) < _lookAheadDistance)
-        {
-            _tracker.transform.LookAt(_circuit._waypoints[_currentTrackerWaypointIndex].transform.position);
-            _tracker.transform.Translate(Vector3.forward);
-
-            if (Vector3.Distance(_tracker.transform.position, _circuit._waypoints[_currentTrackerWaypointIndex].transform.position) < 1)
-            {
-                _currentTrackerWaypointIndex = _circuit.GetNextWaypointIndex(_currentTrackerWaypointIndex);
-            }
-        }
-    }
-
-    public GameObject GetTrackerPosition()
-    {
-        return _tracker.gameObject;
-    }
-
     // This is called by the ReadWaypointInformation script when the car enters a waypoint collider.
     // It sets the braking and acceleration values for the car based on the waypoint information.
     public void SetBrakingAndAccleration(float braking, float accleration)
@@ -148,7 +107,7 @@ public class NPCController : MonoBehaviour
     // Move to last waypoint
     private void Unstick()
     {
-        GameObject trackerPosition = GetTrackerPosition();
+        GameObject trackerPosition = _progressTracker.GetTrackerPosition();
         _rigidbody.transform.position = trackerPosition.transform.position + (Vector3.up * 2);
         _rigidbody.transform.rotation = trackerPosition.transform.rotation;
         // If car is set to brake with no acceleration by a waypoint, it will not move after being unstuck

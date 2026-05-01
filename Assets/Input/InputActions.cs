@@ -111,6 +111,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Power"",
+                    ""type"": ""Button"",
+                    ""id"": ""ee8f6831-b1c1-4336-ba26-97451432d7bd"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""HUD"",
                     ""type"": ""Button"",
                     ""id"": ""1fc85caa-2c33-48b9-bc00-5cfdc2fe30ea"",
@@ -262,6 +271,28 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a53dba4d-56c7-4402-8da9-799b5289ca92"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Power"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d2b6679b-36ec-4d4a-ad52-ef96a2cabf72"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Power"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -428,6 +459,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Driving = asset.FindActionMap("Driving", throwIfNotFound: true);
         m_Driving_Steer = m_Driving.FindAction("Steer", throwIfNotFound: true);
         m_Driving_Camera = m_Driving.FindAction("Camera", throwIfNotFound: true);
+        m_Driving_Power = m_Driving.FindAction("Power", throwIfNotFound: true);
         m_Driving_HUD = m_Driving.FindAction("HUD", throwIfNotFound: true);
         m_Driving_Exit = m_Driving.FindAction("Exit", throwIfNotFound: true);
         m_Driving_ShiftGearUp = m_Driving.FindAction("Shift Gear Up", throwIfNotFound: true);
@@ -516,6 +548,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private List<IDrivingActions> m_DrivingActionsCallbackInterfaces = new List<IDrivingActions>();
     private readonly InputAction m_Driving_Steer;
     private readonly InputAction m_Driving_Camera;
+    private readonly InputAction m_Driving_Power;
     private readonly InputAction m_Driving_HUD;
     private readonly InputAction m_Driving_Exit;
     private readonly InputAction m_Driving_ShiftGearUp;
@@ -541,6 +574,10 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Driving/Camera".
         /// </summary>
         public InputAction @Camera => m_Wrapper.m_Driving_Camera;
+        /// <summary>
+        /// Provides access to the underlying input action "Driving/Power".
+        /// </summary>
+        public InputAction @Power => m_Wrapper.m_Driving_Power;
         /// <summary>
         /// Provides access to the underlying input action "Driving/HUD".
         /// </summary>
@@ -597,6 +634,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Camera.started += instance.OnCamera;
             @Camera.performed += instance.OnCamera;
             @Camera.canceled += instance.OnCamera;
+            @Power.started += instance.OnPower;
+            @Power.performed += instance.OnPower;
+            @Power.canceled += instance.OnPower;
             @HUD.started += instance.OnHUD;
             @HUD.performed += instance.OnHUD;
             @HUD.canceled += instance.OnHUD;
@@ -632,6 +672,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Camera.started -= instance.OnCamera;
             @Camera.performed -= instance.OnCamera;
             @Camera.canceled -= instance.OnCamera;
+            @Power.started -= instance.OnPower;
+            @Power.performed -= instance.OnPower;
+            @Power.canceled -= instance.OnPower;
             @HUD.started -= instance.OnHUD;
             @HUD.performed -= instance.OnHUD;
             @HUD.canceled -= instance.OnHUD;
@@ -704,6 +747,13 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnCamera(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Power" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPower(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "HUD" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

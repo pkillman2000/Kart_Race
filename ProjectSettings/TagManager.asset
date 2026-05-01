@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Waypoint
   - Vehicle
+  - FxTemporaire
+  - Track
+  - Ground
+  - Podium
+  - Podium Camera
   layers:
   - Default
   - TransparentFX
@@ -16,7 +21,7 @@ TagManager:
   - Track
   - Vehicles
   - Mini-Map Icons
-  - 
+  - Ground
   - 
   - 
   - 

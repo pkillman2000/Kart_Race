@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 70b3ac786d4694f51916cab7a11e3514
+AssetOrigin:
+  serializedVersion: 1
+  productId: 118701
+  packageName: Modular Race Track (street)
+  packageVersion: 1.1
+  assetPath: Assets/PolyLabs/Modular Race Track (Street)/Bonus/AtlasEditor.sbsar
+  uploadId: 550506
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: dda12f74ff9116a42b23482252b2c482, type: 3}
+  _fileAsset: {fileID: 6013892654665635331, guid: 70b3ac786d4694f51916cab7a11e3514, type: 3}

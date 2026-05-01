@@ -14,6 +14,8 @@ public class RaceMonitor : MonoBehaviour
     private AudioClip _goBeep;
     [SerializeField]
     private TMP_Text _countdownText;
+    [SerializeField]
+    private AudioSource _musicAudioSource;
 
     [SerializeField]
     public static bool racing = false;
@@ -21,21 +23,14 @@ public class RaceMonitor : MonoBehaviour
     void Start()
     {
         _countdownText.text = "";
-                
+
         StartCoroutine(StartRaceCountdown());
-
-    }
-
-
-    void Update()
-    {
-        
     }
 
     public IEnumerator StartRaceCountdown()
     {
         yield return new WaitForSeconds(.5f);
-        for(int i = 5; i >= 0; i--)
+        for (int i = 5; i >= 0; i--)
         {
             _startingPositionArchLights.SetLightsOn(i);
             switch (i)
@@ -72,8 +67,9 @@ public class RaceMonitor : MonoBehaviour
                     racing = true;
                     break;
             }
-            yield return new WaitForSeconds(1);            
+            yield return new WaitForSeconds(1);
         }
         _countdownText.text = "";
+        _musicAudioSource.Play();
     }
 }

@@ -11,13 +11,18 @@ public class Vehicle
     public int CurrentLap = 0;
     public float CurrentLapPercentage = 0f;
     public float RacePercentage = 0f;
+    public int Position = 0;
 }
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
     private Gauge _gauge;
+    [SerializeField]
+    private GameObject _miniMap;
 
+    [SerializeField]
+    private GameObject _background;
     [SerializeField]
     private TMP_Text _numberOfLapsText;
     [SerializeField]
@@ -33,12 +38,6 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(UpdateLeaderboard());
-    }
-
-
-    void Update()
-    {
-
     }
 
     public void SetCurrentGearName(string currentGearName)
@@ -96,6 +95,7 @@ public class UIManager : MonoBehaviour
                 // Assuming your Row Prefab has a script attached to update its text
                 LeaderboardItem leaderboardItem = row.GetComponent<LeaderboardItem>();
                 leaderboardItem.UpdateItem(rank, racer.Name);
+                racer.Position = rank;
 
                 rank++;
             }
@@ -108,5 +108,27 @@ public class UIManager : MonoBehaviour
     {
         _numberOfLapsText.text = $"{currentLap}/{numberOfLaps}";
         _lapPercentage.text = lapPercentage.ToString("F0") + "%";
+    }
+
+    public int GetVehiclePosition(string vehicleName)
+    {
+        foreach (var racer in RaceResults)
+        {
+            if (racer.Name == vehicleName)
+            {
+                return racer.Position;
+            }
+        }
+        return -1;
+    }
+
+    public void HideUI()
+    {
+        _gauge.gameObject.SetActive(false);
+        _numberOfLapsText.gameObject.SetActive(false);
+        _lapPercentage.gameObject.SetActive(false);
+        leaderboardContainer.gameObject.SetActive(false);
+        _background.SetActive(false);
+        _miniMap.SetActive(false);
     }
 }

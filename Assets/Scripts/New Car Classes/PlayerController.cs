@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -38,6 +39,11 @@ public class PlayerController : MonoBehaviour
         _carController.SetDriverInput(_acceleration, _brake, _steer);
     }
 
+    private void ApplyBoost(InputAction.CallbackContext context)
+    {
+        _carController.ApplyBoost();
+    }
+
     //Enable/Disable New Input System
     private void OnEnable()
     {
@@ -48,12 +54,16 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            _inputActions.Driving.Power.performed += ApplyBoost;
             _inputActions.Driving.Enable();
         }
+
+
     }
 
     private void OnDisable()
     {
+        _inputActions.Driving.Power.performed -= ApplyBoost;
         _inputActions.Driving.Disable();
     }
 }

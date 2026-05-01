@@ -18,6 +18,8 @@ public class CarCollisionNudge : MonoBehaviour
     private GameObject _collisionVFXPrefab;
 
     private Rigidbody _rb;
+    [SerializeField]
+    private Transform _smokeContainer;
 
     private void Awake()
     {
@@ -82,7 +84,7 @@ public class CarCollisionNudge : MonoBehaviour
         Quaternion particleRotation = Quaternion.LookRotation(contact.normal);
 
         // Instantiate the particle effect
-        GameObject particleInstance = Instantiate(_collisionVFXPrefab, contactPoint, particleRotation);
+        GameObject particleInstance = Instantiate(_collisionVFXPrefab, contactPoint, particleRotation, _smokeContainer);
 
         Destroy(particleInstance, 1f);
     }

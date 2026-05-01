@@ -35,6 +35,8 @@ public class CarController : MonoBehaviour
     [SerializeField]
     public string _carName;
     public bool _hasUI = false;
+    [SerializeField]
+    private GameObject _carBodyParent;
 
     [Header("Vehicle Control Type")]
     [SerializeField]
@@ -66,6 +68,11 @@ public class CarController : MonoBehaviour
     [SerializeField]
     private float _topReverseSpeed = 5f;
     private float _timeBeforeReverse = 0;
+    [SerializeField]
+    private float _baseBoostTorque = 200f;
+    private float _currentBoostTorque = 0f;
+    [SerializeField]
+    private float _boostDuration = 2f;
 
     [Header("Steering")]
     [SerializeField]
@@ -121,6 +128,15 @@ public class CarController : MonoBehaviour
     public bool _raceFinished = false;
     [SerializeField]
     private GameObject _cameraContainer;
+    [SerializeField]
+    private float _rayDistance = 1.5f;
+    private ProgressTracker _progressTracker;
+    [SerializeField]
+    private bool _checkForOffTrack = true;
+    [SerializeField]
+    private Podium _podium;
+    [SerializeField]
+    private CameraController _cameraController;
 
     void Start()
     {
@@ -168,6 +184,24 @@ public class CarController : MonoBehaviour
         }
         _skidSmoke = new ParticleSystem[_wheelColliders.Length];
 
+        _progressTracker = GetComponent<ProgressTracker>();
+        if (_progressTracker == null)
+        {
+            Debug.LogError("Progress Tracker is Null!");
+        }
+
+        _podium = FindFirstObjectByType<Podium>();
+        if (_podium == null)
+        {
+            Debug.LogError("Podium is Null!");
+        }
+
+        _cameraController = GetComponent<CameraController>();
+        if (_cameraController == null)
+        {
+            Debug.LogError("Camera Controller is Null!");
+        }
+
         // Make care target or NPC controlled
         if (_isNPCControlled)
         {
@@ -205,7 +239,6 @@ public class CarController : MonoBehaviour
         }
     }
 
-
     void FixedUpdate()
     {
         _currentRigidbodySpeed = _rigidbody.linearVelocity.magnitude;
@@ -221,10 +254,12 @@ public class CarController : MonoBehaviour
             GroundWheels(_wheelColliders[2], _wheelColliders[3]); // Rear wheels
             CheckForSkid();
             RightCar();
+            CheckSurfaceMaterial();
         }
 
         CalculateEngineSound();
         UpdateSpeed();
+        UpdateWheelMeshPosition();
     }
 
     public void SetDriverInput(float acceleration, float braking, float steering)
@@ -249,7 +284,7 @@ public class CarController : MonoBehaviour
             {
                 CalculateGear(_currentRigidbodySpeed);
             }
-            float torque = _baseTorque * _gears[_currentGear]._torqueMultiplier * acceleration;
+            float torque = (_baseTorque * _gears[_currentGear]._torqueMultiplier * acceleration) + _currentBoostTorque;
 
             // CalculateBraking
             float brakeTorque = 0f;
@@ -300,8 +335,6 @@ public class CarController : MonoBehaviour
 
     private void ApplyInputs(float steering, float torque, float brakeTorque)
     {
-
-
         // Apply Acceleration, Braking, and Steering to wheels
         for (int i = 0; i < _wheelColliders.Length; i++)
         {
@@ -332,7 +365,27 @@ public class CarController : MonoBehaviour
                 _wheelColliders[i].steerAngle = 0f;
             }
 
-            // Update wheel mesh position and rotation to match collider
+            //UpdateWheelMeshPosition();
+        }
+    }
+
+    public void ApplyBoost()
+    {
+        _currentBoostTorque = _baseBoostTorque;
+        StartCoroutine(ResetBoostTorque());
+    }
+
+    private IEnumerator ResetBoostTorque()
+    {
+        yield return new WaitForSeconds(_boostDuration);
+        _currentBoostTorque = 0f;
+    }
+
+    private void UpdateWheelMeshPosition()
+    {
+        for (int i = 0; i < _wheelColliders.Length; i++)
+        {
+            // Update wheel mesh raceRank and rotation to match collider
             Vector3 position;
             Quaternion rotation;
             _wheelColliders[i].GetWorldPose(out position, out rotation);
@@ -528,10 +581,33 @@ public class CarController : MonoBehaviour
     // Instantiate the skid smoke particle systems for each wheel
     private void InstantiateSmokePrefabs()
     {
+        GameObject smokeContainer = transform.Find("Smoke Container").gameObject;
         for (int i = 0; i < _wheelColliders.Length; i++)
         {
-            _skidSmoke[i] = Instantiate(_smokePrefab);
+            _skidSmoke[i] = Instantiate(_smokePrefab, smokeContainer.transform);
             _skidSmoke[i].Stop();
+        }
+    }
+
+    public void CheckSurfaceMaterial()
+    {
+        if (_checkForOffTrack)
+        {
+            Ray ray = new Ray(_rigidbody.transform.position, Vector3.down);
+            RaycastHit hit;
+
+            // The 'out hit' parameter is filled with data if the ray returns true
+            if (Physics.Raycast(ray, out hit, _rayDistance))
+            {
+                // Use the Layer to identify the surface
+                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+                {
+                    // Move vehicle to tracker raceRank if it is on the ground layer
+                    GameObject trackerPosition = _progressTracker.GetTrackerPosition();
+                    _rigidbody.transform.position = trackerPosition.transform.position + (Vector3.up * 2);
+                    _rigidbody.transform.rotation = trackerPosition.transform.rotation;
+                }
+            }
         }
     }
 
@@ -572,11 +648,27 @@ public class CarController : MonoBehaviour
         if (_currentLap > _numberOfLaps)
         {
             _raceFinished = true;
+            StartCoroutine(MoveCarToPodium());
         }
     }
 
     IEnumerator MoveCarToPodium()
     {
+        int raceRank = _uiManager.GetVehiclePosition(_carName);
+        int podiumIndex = raceRank - 1;
+        Transform podiumTransform = _podium.GetPodiumPosition(podiumIndex);
+
         yield return new WaitForSeconds(2.0f);
+
+        if (_hasUI)
+        {
+            _cameraController.SwitchToPodiumCamera();
+            _uiManager.HideUI();
+        }
+        _rigidbody.linearVelocity = Vector3.zero;
+        _rigidbody.angularVelocity = Vector3.zero;
+
+        _rigidbody.gameObject.transform.position = podiumTransform.position;
+        _rigidbody.transform.rotation = podiumTransform.rotation;
     }
 }

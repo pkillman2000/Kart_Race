@@ -1,0 +1,373 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed5864476f84ce4b85454db09ca4eaa, type: 3}
+  m_Name: graph_0
+  m_EditorClassIdentifier: Adobe.Substance::Adobe.Substance.SubstanceGraphSO
+  AssetPath: Assets/PolyLabs/Modular Race Track (Street)/Bonus/AtlasEditor.sbsar
+  RawData: {fileID: -244192453324840774, guid: 70b3ac786d4694f51916cab7a11e3514, type: 3}
+  Name: graph_0
+  IsRoot: 1
+  FlagedForDelete: 0
+  GUID: 5ca71587-81aa-4876-b437-fc316a9e2034
+  Index: 0
+  Input:
+  - rid: 6719687888874766574
+  - rid: 6719687888874766575
+  - rid: 6719687888874766576
+  - rid: 6719687888874766577
+  - rid: 6719687888874766578
+  - rid: 6719687888874766579
+  - rid: 6719687888874766580
+  - rid: 6719687888874766581
+  - rid: 6719687888874766582
+  - rid: 6719687888874766583
+  - rid: 6719687888874766584
+  - rid: 6719687888874766585
+  - rid: 6719687888874766586
+  - rid: 6719687888874766587
+  - rid: 6719687888874766588
+  Output:
+  - Index: 0
+    VirtualOutputIndex: 1
+    Description:
+      Identifier: output
+      Label: output
+      Index: 0
+      Type: 8
+      Channel: diffuse
+    OutputTexture: {fileID: 2800000, guid: 1e67216e3b18b964dbfac374758b35d2, type: 3}
+    sRGB: 1
+    IsVirtual: 0
+    IsAlphaAssignable: 1
+    AlphaChannel: 
+    InvertAssignedAlpha: 0
+    Flags: 0
+    MaterialTextureTarget: _MainTex
+  HasPhysicalSize: 0
+  PhysicalSize: {x: 0, y: 0, z: 0}
+  EnablePhysicalSize: 0
+  Thumbnail: 
+  CurrentStatePreset: 
+  IsRuntimeOnly: 0
+  GenerateAllOutputs: 0
+  GenerateAllMipmaps: 1
+  OutputMaterial: {fileID: 2100000, guid: eaf9ec99942a5f04a8a91ee76f00ca37, type: 2}
+  DefaultPreset: " <sbspreset pkgurl=\"pkg://Atlas\" label=\"\" >\n </sbspreset>\n"
+  MaterialShader: Standard
+  RenderTextures: 0
+  OutputRemaped: 0
+  Presets: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 6719687888874766574
+      type: {class: SubstanceInputInt, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 0
+        Description:
+          Identifier: $randomseed
+          Label: $randomseed
+          GuiGroup: 
+          GuiDescription: 
+          Type: 4
+          WidgetType: 0
+        Data: 0
+        NumericalDescription:
+          DefaultValue: 0
+          MinValue: 0
+          MaxValue: 1
+          SliderStep: 0.01
+          SliderClamp: 0
+          LabelFalse: 
+          LabelTrue: 
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6719687888874766575
+      type: {class: SubstanceInputFloat4, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 1
+        Description:
+          Identifier: Cement
+          Label: Cement
+          GuiGroup: Track
+          GuiDescription: 
+          Type: 3
+          WidgetType: 3
+        Data: {x: 0.623529, y: 0.623529, z: 0.623529, w: 1}
+        NumericalDescription:
+          DefaultValue: {x: 0.623529, y: 0.623529, z: 0.623529, w: 1}
+          MinValue: {x: 0, y: 0, z: 0, w: 0}
+          MaxValue: {x: 1, y: 1, z: 1, w: 1}
+          SliderStep: 0.01
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6719687888874766576
+      type: {class: SubstanceInputFloat4, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 2
+        Description:
+          Identifier: Asphalt
+          Label: Asphalt
+          GuiGroup: Track
+          GuiDescription: 
+          Type: 3
+          WidgetType: 3
+        Data: {x: 0.172549, y: 0.172549, z: 0.172549, w: 1}
+        NumericalDescription:
+          DefaultValue: {x: 0.172549, y: 0.172549, z: 0.172549, w: 1}
+          MinValue: {x: 0, y: 0, z: 0, w: 0}
+          MaxValue: {x: 1, y: 1, z: 1, w: 1}
+          SliderStep: 0.01
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6719687888874766577
+      type: {class: SubstanceInputFloat4, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 3
+        Description:
+          Identifier: Rumble_Strip
+          Label: Rumble_Strip
+          GuiGroup: Track
+          GuiDescription: 
+          Type: 3
+          WidgetType: 3
+        Data: {x: 1, y: 0, z: 0, w: 1}
+        NumericalDescription:
+          DefaultValue: {x: 1, y: 0, z: 0, w: 1}
+          MinValue: {x: 0, y: 0, z: 0, w: 0}
+          MaxValue: {x: 1, y: 1, z: 1, w: 1}
+          SliderStep: 0.01
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6719687888874766578
+      type: {class: SubstanceInputFloat4, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 4
+        Description:
+          Identifier: Arch_Black
+          Label: Arch_Black
+          GuiGroup: Arch
+          GuiDescription: 
+          Type: 3
+          WidgetType: 3
+        Data: {x: 0, y: 0, z: 0, w: 1}
+        NumericalDescription:
+          DefaultValue: {x: 0, y: 0, z: 0, w: 1}
+          MinValue: {x: 0, y: 0, z: 0, w: 0}
+          MaxValue: {x: 1, y: 1, z: 1, w: 1}
+          SliderStep: 0.01
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6719687888874766579
+      type: {class: SubstanceInputFloat4, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 5
+        Description:
+          Identifier: Arch_White
+          Label: Arch_White
+          GuiGroup: Arch
+          GuiDescription: 
+          Type: 3
+          WidgetType: 3
+        Data: {x: 1, y: 1, z: 1, w: 1}
+        NumericalDescription:
+          DefaultValue: {x: 1, y: 1, z: 1, w: 1}
+          MinValue: {x: 0, y: 0, z: 0, w: 0}
+          MaxValue: {x: 1, y: 1, z: 1, w: 1}
+          SliderStep: 0.01
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6719687888874766580
+      type: {class: SubstanceInputFloat4, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 6
+        Description:
+          Identifier: Cone_Tone_One
+          Label: Cone_Tone_One
+          GuiGroup: Cone
+          GuiDescription: 
+          Type: 3
+          WidgetType: 3
+        Data: {x: 0, y: 0, z: 0, w: 1}
+        NumericalDescription:
+          DefaultValue: {x: 0, y: 0, z: 0, w: 1}
+          MinValue: {x: 0, y: 0, z: 0, w: 0}
+          MaxValue: {x: 1, y: 1, z: 1, w: 1}
+          SliderStep: 0.01
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6719687888874766581
+      type: {class: SubstanceInputFloat4, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 7
+        Description:
+          Identifier: Cone_Tone_Two
+          Label: Cone_Tone_Two
+          GuiGroup: Cone
+          GuiDescription: 
+          Type: 3
+          WidgetType: 3
+        Data: {x: 1, y: 0.647059, z: 0, w: 1}
+        NumericalDescription:
+          DefaultValue: {x: 1, y: 0.647059, z: 0, w: 1}
+          MinValue: {x: 0, y: 0, z: 0, w: 0}
+          MaxValue: {x: 1, y: 1, z: 1, w: 1}
+          SliderStep: 0.01
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6719687888874766582
+      type: {class: SubstanceInputFloat4, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 8
+        Description:
+          Identifier: Cone_Tone_Three
+          Label: Cone_Tone_Three
+          GuiGroup: Cone
+          GuiDescription: 
+          Type: 3
+          WidgetType: 3
+        Data: {x: 1, y: 1, z: 0, w: 1}
+        NumericalDescription:
+          DefaultValue: {x: 1, y: 1, z: 0, w: 1}
+          MinValue: {x: 0, y: 0, z: 0, w: 0}
+          MaxValue: {x: 1, y: 1, z: 1, w: 1}
+          SliderStep: 0.01
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6719687888874766583
+      type: {class: SubstanceInputFloat4, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 9
+        Description:
+          Identifier: Crate_Tone_One
+          Label: Crate_Tone_One
+          GuiGroup: Crate
+          GuiDescription: 
+          Type: 3
+          WidgetType: 3
+        Data: {x: 0.117647, y: 0.0431373, z: 0.0117647, w: 1}
+        NumericalDescription:
+          DefaultValue: {x: 0.117647, y: 0.0431373, z: 0.0117647, w: 1}
+          MinValue: {x: 0, y: 0, z: 0, w: 0}
+          MaxValue: {x: 1, y: 1, z: 1, w: 1}
+          SliderStep: 0.01
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6719687888874766584
+      type: {class: SubstanceInputFloat4, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 10
+        Description:
+          Identifier: Crate_Tone_Two
+          Label: Crate_Tone_Two
+          GuiGroup: Crate
+          GuiDescription: 
+          Type: 3
+          WidgetType: 3
+        Data: {x: 0.258824, y: 0.12549, z: 0.0470588, w: 1}
+        NumericalDescription:
+          DefaultValue: {x: 0.258824, y: 0.12549, z: 0.0470588, w: 1}
+          MinValue: {x: 0, y: 0, z: 0, w: 0}
+          MaxValue: {x: 1, y: 1, z: 1, w: 1}
+          SliderStep: 0.01
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6719687888874766585
+      type: {class: SubstanceInputFloat4, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 11
+        Description:
+          Identifier: BumpTone
+          Label: BumpTone
+          GuiGroup: Bump
+          GuiDescription: 
+          Type: 3
+          WidgetType: 3
+        Data: {x: 0.364706, y: 0.364706, z: 0.364706, w: 1}
+        NumericalDescription:
+          DefaultValue: {x: 0.364706, y: 0.364706, z: 0.364706, w: 1}
+          MinValue: {x: 0, y: 0, z: 0, w: 0}
+          MaxValue: {x: 1, y: 1, z: 1, w: 1}
+          SliderStep: 0.01
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6719687888874766586
+      type: {class: SubstanceInputFloat4, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 12
+        Description:
+          Identifier: Rim
+          Label: Rim
+          GuiGroup: Tire
+          GuiDescription: 
+          Type: 3
+          WidgetType: 3
+        Data: {x: 0.388235, y: 0.388235, z: 0.388235, w: 1}
+        NumericalDescription:
+          DefaultValue: {x: 0.388235, y: 0.388235, z: 0.388235, w: 1}
+          MinValue: {x: 0, y: 0, z: 0, w: 0}
+          MaxValue: {x: 1, y: 1, z: 1, w: 1}
+          SliderStep: 0.01
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6719687888874766587
+      type: {class: SubstanceInputFloat4, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 13
+        Description:
+          Identifier: Tire_Tread
+          Label: Tire_Tread
+          GuiGroup: Tire
+          GuiDescription: 
+          Type: 3
+          WidgetType: 3
+        Data: {x: 0.054902, y: 0.054902, z: 0.054902, w: 1}
+        NumericalDescription:
+          DefaultValue: {x: 0.054902, y: 0.054902, z: 0.054902, w: 1}
+          MinValue: {x: 0, y: 0, z: 0, w: 0}
+          MaxValue: {x: 1, y: 1, z: 1, w: 1}
+          SliderStep: 0.01
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
+    - rid: 6719687888874766588
+      type: {class: SubstanceInputFloat4, ns: Adobe.Substance.Input, asm: Adobe.Substance}
+      data:
+        Index: 14
+        Description:
+          Identifier: Ramp_Color
+          Label: Ramp_Color
+          GuiGroup: Ramp
+          GuiDescription: 
+          Type: 3
+          WidgetType: 3
+        Data: {x: 0.482353, y: 0.482353, z: 0.482353, w: 1}
+        NumericalDescription:
+          DefaultValue: {x: 0.482353, y: 0.482353, z: 0.482353, w: 1}
+          MinValue: {x: 0, y: 0, z: 0, w: 0}
+          MaxValue: {x: 1, y: 1, z: 1, w: 1}
+          SliderStep: 0.01
+          SliderClamp: 0
+          EnumValueCount: 0
+          EnumValues: []
